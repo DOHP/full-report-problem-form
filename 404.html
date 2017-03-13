@@ -1,0 +1,848 @@
+
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if IE 9 ]><html class="ie9 no-js"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+ 
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<script type="text/javascript">window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o||e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({1:[function(t,e,n){function r(t){try{s.console&&console.log(t)}catch(e){}}var o,i=t("ee"),a=t(14),s={};try{o=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(s.console=!0,-1!==o.indexOf("dev")&&(s.dev=!0),-1!==o.indexOf("nr_dev")&&(s.nrDev=!0))}catch(c){}s.nrDev&&i.on("internal-error",function(t){r(t.stack)}),s.dev&&i.on("fn-err",function(t,e,n){r(n.stack)}),s.dev&&(r("NR AGENT IN DEVELOPMENT MODE"),r("flags: "+a(s,function(t,e){return t}).join(", ")))},{}],2:[function(t,e,n){function r(t,e,n,r,o){try{d?d-=1:i("err",[o||new UncaughtException(t,e,n)])}catch(s){try{i("ierr",[s,(new Date).getTime(),!0])}catch(c){}}return"function"==typeof f?f.apply(this,a(arguments)):!1}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function o(t){i("err",[t,(new Date).getTime()])}var i=t("handle"),a=t(15),s=t("ee"),c=t("loader"),f=window.onerror,u=!1,d=0;c.features.err=!0,t(1),window.onerror=r;try{throw new Error}catch(l){"stack"in l&&(t(8),t(7),"addEventListener"in window&&t(5),c.xhrWrappable&&t(9),u=!0)}s.on("fn-start",function(t,e,n){u&&(d+=1)}),s.on("fn-err",function(t,e,n){u&&(this.thrown=!0,o(n))}),s.on("fn-end",function(){u&&!this.thrown&&d>0&&(d-=1)}),s.on("internal-error",function(t){i("ierr",[t,(new Date).getTime(),!0])})},{}],3:[function(t,e,n){t("loader").features.ins=!0},{}],4:[function(t,e,n){function r(t){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var o=t("ee"),i=t("handle"),a=t(8),s=t(7);t("loader").features.stn=!0,t(6);var c=NREUM.o.EV;o.on("fn-start",function(t,e){var n=t[0];n instanceof c&&(this.bstStart=Date.now())}),o.on("fn-end",function(t,e){var n=t[0];n instanceof c&&i("bst",[n,e,this.bstStart,Date.now()])}),a.on("fn-start",function(t,e,n){this.bstStart=Date.now(),this.bstType=n}),a.on("fn-end",function(t,e){i("bstTimer",[e,this.bstStart,Date.now(),this.bstType])}),s.on("fn-start",function(){this.bstStart=Date.now()}),s.on("fn-end",function(t,e){i("bstTimer",[e,this.bstStart,Date.now(),"requestAnimationFrame"])}),o.on("pushState-start",function(t){this.time=Date.now(),this.startPath=location.pathname+location.hash}),o.on("pushState-end",function(t){i("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),"addEventListener"in window.performance&&(window.performance.clearResourceTimings?window.performance.addEventListener("resourcetimingbufferfull",function(t){i("bstResource",[window.performance.getEntriesByType("resource")]),window.performance.clearResourceTimings()},!1):window.performance.addEventListener("webkitresourcetimingbufferfull",function(t){i("bstResource",[window.performance.getEntriesByType("resource")]),window.performance.webkitClearResourceTimings()},!1)),document.addEventListener("scroll",r,!1),document.addEventListener("keypress",r,!1),document.addEventListener("click",r,!1)}},{}],5:[function(t,e,n){function r(t){for(var e=t;e&&!e.hasOwnProperty(u);)e=Object.getPrototypeOf(e);e&&o(e)}function o(t){s.inPlace(t,[u,d],"-",i)}function i(t,e){return t[1]}var a=t("ee").get("events"),s=t(16)(a),c=t("gos"),f=XMLHttpRequest,u="addEventListener",d="removeEventListener";e.exports=a,"getPrototypeOf"in Object?(r(document),r(window),r(f.prototype)):f.prototype.hasOwnProperty(u)&&(o(window),o(f.prototype)),a.on(u+"-start",function(t,e){if(t[1]){var n=t[1];if("function"==typeof n){var r=c(n,"nr@wrapped",function(){return s(n,"fn-",null,n.name||"anonymous")});this.wrapped=t[1]=r}else"function"==typeof n.handleEvent&&s.inPlace(n,["handleEvent"],"fn-")}}),a.on(d+"-start",function(t){var e=this.wrapped;e&&(t[1]=e)})},{}],6:[function(t,e,n){var r=t("ee").get("history"),o=t(16)(r);e.exports=r,o.inPlace(window.history,["pushState","replaceState"],"-")},{}],7:[function(t,e,n){var r=t("ee").get("raf"),o=t(16)(r);e.exports=r,o.inPlace(window,["requestAnimationFrame","mozRequestAnimationFrame","webkitRequestAnimationFrame","msRequestAnimationFrame"],"raf-"),r.on("raf-start",function(t){t[0]=o(t[0],"fn-")})},{}],8:[function(t,e,n){function r(t,e,n){t[0]=a(t[0],"fn-",null,n)}function o(t,e,n){this.method=n,this.timerDuration="number"==typeof t[1]?t[1]:0,t[0]=a(t[0],"fn-",this,n)}var i=t("ee").get("timer"),a=t(16)(i);e.exports=i,a.inPlace(window,["setTimeout","setImmediate"],"setTimer-"),a.inPlace(window,["setInterval"],"setInterval-"),a.inPlace(window,["clearTimeout","clearImmediate"],"clearTimeout-"),i.on("setInterval-start",r),i.on("setTimer-start",o)},{}],9:[function(t,e,n){function r(t,e){d.inPlace(e,["onreadystatechange"],"fn-",s)}function o(){var t=this,e=u.context(t);t.readyState>3&&!e.resolved&&(e.resolved=!0,u.emit("xhr-resolved",[],t)),d.inPlace(t,v,"fn-",s)}function i(t){w.push(t),h&&(g=-g,b.data=g)}function a(){for(var t=0;t<w.length;t++)r([],w[t]);w.length&&(w=[])}function s(t,e){return e}function c(t,e){for(var n in t)e[n]=t[n];return e}t(5);var f=t("ee"),u=f.get("xhr"),d=t(16)(u),l=NREUM.o,p=l.XHR,h=l.MO,m="readystatechange",v=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"],w=[];e.exports=u;var y=window.XMLHttpRequest=function(t){var e=new p(t);try{u.emit("new-xhr",[e],e),e.addEventListener(m,o,!1)}catch(n){try{u.emit("internal-error",[n])}catch(r){}}return e};if(c(p,y),y.prototype=p.prototype,d.inPlace(y.prototype,["open","send"],"-xhr-",s),u.on("send-xhr-start",function(t,e){r(t,e),i(e)}),u.on("open-xhr-start",r),h){var g=1,b=document.createTextNode(g);new h(a).observe(b,{characterData:!0})}else f.on("fn-end",function(t){t[0]&&t[0].type===m||a()})},{}],10:[function(t,e,n){function r(t){var e=this.params,n=this.metrics;if(!this.ended){this.ended=!0;for(var r=0;l>r;r++)t.removeEventListener(d[r],this.listener,!1);if(!e.aborted){if(n.duration=(new Date).getTime()-this.startTime,4===t.readyState){e.status=t.status;var i=o(t,this.lastSize);if(i&&(n.rxSize=i),this.sameOrigin){var a=t.getResponseHeader("X-NewRelic-App-Data");a&&(e.cat=a.split(", ").pop())}}else e.status=0;n.cbTime=this.cbTime,u.emit("xhr-done",[t],t),c("xhr",[e,n,this.startTime])}}}function o(t,e){var n=t.responseType;if("json"===n&&null!==e)return e;var r="arraybuffer"===n||"blob"===n||"json"===n?t.response:t.responseText;return i(r)}function i(t){if("string"==typeof t&&t.length)return t.length;if("object"==typeof t){if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if(!("undefined"!=typeof FormData&&t instanceof FormData))try{return JSON.stringify(t).length}catch(e){return}}}function a(t,e){var n=f(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.sameOrigin=n.sameOrigin}var s=t("loader");if(s.xhrWrappable){var c=t("handle"),f=t(11),u=t("ee"),d=["load","error","abort","timeout"],l=d.length,p=t("id"),h=t(13),m=window.XMLHttpRequest;s.features.xhr=!0,t(9),u.on("new-xhr",function(t){var e=this;e.totalCbs=0,e.called=0,e.cbTime=0,e.end=r,e.ended=!1,e.xhrGuids={},e.lastSize=null,h&&(h>34||10>h)||window.opera||t.addEventListener("progress",function(t){e.lastSize=t.loaded},!1)}),u.on("open-xhr-start",function(t){this.params={method:t[0]},a(this,t[1]),this.metrics={}}),u.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),u.on("send-xhr-start",function(t,e){var n=this.metrics,r=t[0],o=this;if(n&&r){var a=i(r);a&&(n.txSize=a)}this.startTime=(new Date).getTime(),this.listener=function(t){try{"abort"===t.type&&(o.params.aborted=!0),("load"!==t.type||o.called===o.totalCbs&&(o.onloadCalled||"function"!=typeof e.onload))&&o.end(e)}catch(n){try{u.emit("internal-error",[n])}catch(r){}}};for(var s=0;l>s;s++)e.addEventListener(d[s],this.listener,!1)}),u.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),u.on("xhr-load-added",function(t,e){var n=""+p(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),u.on("xhr-load-removed",function(t,e){var n=""+p(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),u.on("addEventListener-end",function(t,e){e instanceof m&&"load"===t[0]&&u.emit("xhr-load-added",[t[1],t[2]],e)}),u.on("removeEventListener-end",function(t,e){e instanceof m&&"load"===t[0]&&u.emit("xhr-load-removed",[t[1],t[2]],e)}),u.on("fn-start",function(t,e,n){e instanceof m&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=(new Date).getTime()))}),u.on("fn-end",function(t,e){this.xhrCbStart&&u.emit("xhr-cb-time",[(new Date).getTime()-this.xhrCbStart,this.onload,e],e)})}},{}],11:[function(t,e,n){e.exports=function(t){var e=document.createElement("a"),n=window.location,r={};e.href=t,r.port=e.port;var o=e.href.split("://");!r.port&&o[1]&&(r.port=o[1].split("/")[0].split("@").pop().split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=e.hostname||n.hostname,r.pathname=e.pathname,r.protocol=o[0],"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname);var i=!e.protocol||":"===e.protocol||e.protocol===n.protocol,a=e.hostname===document.domain&&e.port===n.port;return r.sameOrigin=i&&(!e.hostname||a),r}},{}],12:[function(t,e,n){function r(t,e){return function(){o(t,[(new Date).getTime()].concat(a(arguments)),null,e)}}var o=t("handle"),i=t(14),a=t(15);"undefined"==typeof window.newrelic&&(newrelic=NREUM);var s=["setPageViewName","addPageAction","setCustomAttribute","finished","addToTrace","inlineHit"],c=["addPageAction"],f="api-";i(s,function(t,e){newrelic[e]=r(f+e,"api")}),i(c,function(t,e){newrelic[e]=r(f+e)}),e.exports=newrelic,newrelic.noticeError=function(t){"string"==typeof t&&(t=new Error(t)),o("err",[t,(new Date).getTime()])}},{}],13:[function(t,e,n){var r=0,o=navigator.userAgent.match(/Firefox[\/\s](\d+\.\d+)/);o&&(r=+o[1]),e.exports=r},{}],14:[function(t,e,n){function r(t,e){var n=[],r="",i=0;for(r in t)o.call(t,r)&&(n[i]=e(r,t[r]),i+=1);return n}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],15:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(0>o?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=r},{}],16:[function(t,e,n){function r(t){return!(t&&"function"==typeof t&&t.apply&&!t[a])}var o=t("ee"),i=t(15),a="nr@original",s=Object.prototype.hasOwnProperty,c=!1;e.exports=function(t){function e(t,e,n,o){function nrWrapper(){var r,a,s,c;try{a=this,r=i(arguments),s="function"==typeof n?n(r,a):n||{}}catch(u){d([u,"",[r,a,o],s])}f(e+"start",[r,a,o],s);try{return c=t.apply(a,r)}catch(l){throw f(e+"err",[r,a,l],s),l}finally{f(e+"end",[r,a,c],s)}}return r(t)?t:(e||(e=""),nrWrapper[a]=t,u(t,nrWrapper),nrWrapper)}function n(t,n,o,i){o||(o="");var a,s,c,f="-"===o.charAt(0);for(c=0;c<n.length;c++)s=n[c],a=t[s],r(a)||(t[s]=e(a,f?s+o:o,i,s))}function f(e,n,r){if(!c){c=!0;try{t.emit(e,n,r)}catch(o){d([o,e,n,r])}c=!1}}function u(t,e){if(Object.defineProperty&&Object.keys)try{var n=Object.keys(t);return n.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(r){d([r])}for(var o in t)s.call(t,o)&&(e[o]=t[o]);return e}function d(e){try{t.emit("internal-error",e)}catch(n){}}return t||(t=o),e.inPlace=n,e.flag=a,e}},{}],ee:[function(t,e,n){function r(){}function o(t){function e(t){return t&&t instanceof r?t:t?s(t,a,i):i()}function n(n,r,o){t&&t(n,r,o);for(var i=e(o),a=l(n),s=a.length,c=0;s>c;c++)a[c].apply(i,r);var u=f[v[n]];return u&&u.push([w,n,r,i]),i}function d(t,e){m[t]=l(t).concat(e)}function l(t){return m[t]||[]}function p(t){return u[t]=u[t]||o(n)}function h(t,e){c(t,function(t,n){e=e||"feature",v[n]=e,e in f||(f[e]=[])})}var m={},v={},w={on:d,emit:n,get:p,listeners:l,context:e,buffer:h};return w}function i(){return new r}var a="nr@context",s=t("gos"),c=t(14),f={},u={},d=e.exports=o();d.backlog=f},{}],gos:[function(t,e,n){function r(t,e,n){if(o.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return t[e]=r,r}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){o.buffer([t],r),o.emit(t,e,n)}var o=t("ee").get("handle");e.exports=r,r.ee=o},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,i,function(){return o++})}var o=1,i="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!m++){var t=h.info=NREUM.info,e=u.getElementsByTagName("script")[0];if(t&&t.licenseKey&&t.applicationID&&e){c(l,function(e,n){t[e]||(t[e]=n)});var n="https"===d.split(":")[0]||t.sslForHttp;h.proto=n?"https://":"http://",s("mark",["onload",a()],null,"api");var r=u.createElement("script");r.src=h.proto+t.agent,e.parentNode.insertBefore(r,e)}}}function o(){"complete"===u.readyState&&i()}function i(){s("mark",["domContent",a()],null,"api")}function a(){return(new Date).getTime()}var s=t("handle"),c=t(14),f=window,u=f.document;NREUM.o={ST:setTimeout,CT:clearTimeout,XHR:f.XMLHttpRequest,REQ:f.Request,EV:f.Event,PR:f.Promise,MO:f.MutationObserver},t(12);var d=""+location,l={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-918.min.js"},p=window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&!/CriOS/.test(navigator.userAgent),h=e.exports={offset:a(),origin:d,features:{},xhrWrappable:p};u.addEventListener?(u.addEventListener("DOMContentLoaded",i,!1),f.addEventListener("load",r,!1)):(u.attachEvent("onreadystatechange",o),f.attachEvent("onload",r)),s("mark",["firstbyte",a()],null,"api");var m=0},{}]},{},["loader",2,10,4,3]);;NREUM.info={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",licenseKey:"c56d70d6eb",applicationID:"16963780",sa:1,agent:"js-agent.newrelic.com/nr-918.min.js"}</script><script type="text/javascript">
+//<![CDATA[
+try{if (!window.CloudFlare) {var CloudFlare=[{verbose:0,p:0,byc:0,owlid:"cf",bag2:1,mirage2:0,oracle:0,paths:{cloudflare:"/cdn-cgi/nexp/dok3v=1613a3a185/"},atok:"30f78323e1b15d935716bf5ac25fda49",petok:"0ae663d88c1c3f8b34e904012f1034915116e5a4-1489353048-1800",zone:"dohp.com",rocket:"a",apps:{"abetterbrowser":{"ie":"10","opera":"42.0.2393.136","chrome":"56.0.2924.75","safari":"10.0.2","firefox":"50.9"},"ga_key":{"ua":"UA-71592599-1","ga_bs":"2"},"vig_key":{"sid":"3969fbd7eff60dc4dbdd07f2362acc5a"}}}];document.write('<script type="text/javascript" src="//ajax.cloudflare.com/cdn-cgi/nexp/dok3v=f2befc48d1/cloudflare.min.js"><'+'\/script>');}}catch(e){};
+//]]>
+</script>
+<link rel="shortcut icon" href="//cdn.shopify.com/s/files/1/0871/2118/t/3/assets/favicon.png?10403176424461686810" type="image/png"/>
+ 
+<title>
+404 Not Found &ndash; D.O.H.P. Store
+</title>
+ 
+<meta property="og:type" content="website">
+<meta property="og:title" content="404 Not Found">
+<meta property="og:image" content="https://cdn.shopify.com/s/files/1/0871/2118/t/3/assets/logo.png?10403176424461686810">
+<meta property="og:image:secure_url" content="https://cdn.shopify.com/s/files/1/0871/2118/t/3/assets/logo.png?10403176424461686810">
+<meta property="og:url" content="">
+<meta property="og:site_name" content="D.O.H.P. Store">
+<meta name="twitter:site" content="@d_o_h_p">
+ 
+<link rel="canonical" href="">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link href="//fonts.googleapis.com/css?family=Open+Sans:" rel="stylesheet" type="text/css" media="all"/>
+<link href="//fonts.googleapis.com/css?family=Merriweather:700" rel="stylesheet" type="text/css" media="all"/>
+<link href="//fonts.googleapis.com/css?family=Montserrat:700" rel="stylesheet" type="text/css" media="all"/>
+ 
+<link href="//cdn.shopify.com/s/files/1/0871/2118/t/3/assets/timber.scss.css?10403176424461686810" rel="stylesheet" type="text/css" media="all"/>
+ 
+ 
+<script type="text/rocketscript">
+//<![CDATA[
+      var Shopify = Shopify || {};
+      Shopify.shop = "decorate-our-home-planet.myshopify.com";
+      Shopify.theme = {"name":"Solo","id":22074115,"theme_store_id":22,"role":"main"};
+      Shopify.theme.handle = 'null';
+      Shopify.theme.style = {"id":null,"handle":null};
+
+//]]>
+</script><script type="text/rocketscript">
+//<![CDATA[
+    (function() {
+      function asyncLoad() {
+        var urls = ["\/\/productreviews.shopifycdn.com\/assets\/v4\/spr.js?shop=decorate-our-home-planet.myshopify.com","\/\/d1liekpayvooaz.cloudfront.net\/apps\/customizery\/customizery.js?shop=decorate-our-home-planet.myshopify.com","\/\/shopify.privy.com\/widget.js?shop=decorate-our-home-planet.myshopify.com","https:\/\/s3.amazonaws.com\/lastsecondcoupon\/js\/freeshippingbar.js?shop=decorate-our-home-planet.myshopify.com","https:\/\/s3.amazonaws.com\/lastsecondcoupon\/js\/quickannouncementbar.js?shop=decorate-our-home-planet.myshopify.com","\/\/s3.amazonaws.com\/shopify-apps\/upsell-on-exit-visit\/js\/common.js?shop=decorate-our-home-planet.myshopify.com","\/\/s3.amazonaws.com\/shopify-apps\/upsell-motivator\/js\/common.js?shop=decorate-our-home-planet.myshopify.com","\/\/s3.amazonaws.com\/shopify-apps\/discount-reminder\/js\/common.js?shop=decorate-our-home-planet.myshopify.com","\/\/cdn.ywxi.net\/js\/1.js?shop=decorate-our-home-planet.myshopify.com","\/\/onetreeplanted.info\/resource\/545\/resource.js?shop=decorate-our-home-planet.myshopify.com","https:\/\/cdn-stamped-io.azureedge.net\/files\/shopify.min.js?shop=decorate-our-home-planet.myshopify.com","https:\/\/messenger-commerce.shopifyapps.com\/message_us.js?version=1471535392\u0026shop=decorate-our-home-planet.myshopify.com","https:\/\/cdn.shopify.com\/s\/files\/1\/0871\/2118\/t\/3\/assets\/sca-qv-scripts-noconfig.js?10779138642890399704\u0026shop=decorate-our-home-planet.myshopify.com"];
+        for (var i = 0; i < urls.length; i++) {
+          var s = document.createElement('script');
+          s.type = 'text/javascript';
+          s.async = true;
+          s.src = urls[i];
+          var x = document.getElementsByTagName('script')[0];
+          x.parentNode.insertBefore(s, x);
+        }
+      };
+      if(window.attachEvent) {
+        window.attachEvent('onload', asyncLoad);
+      } else {
+        window.addEventListener('load', asyncLoad, false);
+      }
+    })();
+
+//]]>
+</script><script id="__st" type="text/rocketscript">
+//<![CDATA[
+var __st={"a":8712118,"offset":-25200,"reqid":"4efbc486-dc8c-4882-8639-c6360b2d7c20","pageurl":"dohp.com\/404","u":"78cd28684388"};
+//]]>
+</script><script data-rocketsrc="https://cdn.shopify.com/s/javascripts/shopify_stats.js?v=6" type="text/rocketscript" async="async"></script>
+<meta id="shopify-digital-wallet" data-iframe-url="/8712118/digital_wallets/dialog"/>
+<script data-rocketsrc="//cdn.shopify.com/s/assets/themes_support/ga_urchin_forms-668547562549a84f5dfa01ef82607987f85ecbe1c8301faf25059becfa208199.js" defer="defer" type="text/rocketscript"></script>
+<script type="text/rocketscript">
+        
+      window.ShopifyAnalytics = window.ShopifyAnalytics || {};
+      window.ShopifyAnalytics.meta = window.ShopifyAnalytics.meta || {};
+      window.ShopifyAnalytics.meta.currency = 'USD';
+      var meta = {"page":{}};
+      for (var attr in meta) {
+        window.ShopifyAnalytics.meta[attr] = meta[attr];
+      }
+    
+      </script>
+<script type="text/rocketscript">
+        window.ShopifyAnalytics.merchantGoogleAnalytics = function() {
+          
+        };
+      </script>
+<script type="text/rocketscript" class="analytics">
+        (window.gaDevIds=window.gaDevIds||[]).push('BwiEti');
+        
+
+        (function () {
+          var customDocumentWrite = function(content) {
+            var jquery = null;
+
+            if (window.jQuery) {
+              jquery = window.jQuery;
+            } else if (window.Checkout && window.Checkout.$) {
+              jquery = window.Checkout.$;
+            }
+
+            if (jquery) {
+              jquery('body').append(content);
+            }
+          };
+
+          var trekkie = window.ShopifyAnalytics.lib = window.trekkie = window.trekkie || [];
+          if (trekkie.integrations) {
+            return;
+          }
+          trekkie.methods = [
+            'identify',
+            'page',
+            'ready',
+            'track',
+            'trackForm',
+            'trackLink'
+          ];
+          trekkie.factory = function(method) {
+            return function() {
+              var args = Array.prototype.slice.call(arguments);
+              args.unshift(method);
+              trekkie.push(args);
+              return trekkie;
+            };
+          };
+          for (var i = 0; i < trekkie.methods.length; i++) {
+            var key = trekkie.methods[i];
+            trekkie[key] = trekkie.factory(key);
+          }
+          trekkie.load = function(config) {
+            trekkie.config = config;
+            var script = document.createElement('script');
+            script.type = 'text/javascript';
+            script.onerror = function(e) {
+              (new Image()).src = '//v.shopify.com/internal_errors/track?error=trekkie_load';
+            };
+            script.async = true;
+            script.src = 'https://cdn.shopify.com/s/javascripts/tricorder/trekkie.storefront.min.js?v=2017.02.23.1';
+            var first = document.getElementsByTagName('script')[0];
+            first.parentNode.insertBefore(script, first);
+          };
+          trekkie.load(
+            {"Trekkie":{"appName":"storefront","development":false,"defaultAttributes":{"shopId":8712118}},"Performance":{"navigationTimingApiMeasurementsEnabled":true,"navigationTimingApiMeasurementsSampleRate":0.1},"Google Analytics":{"trackingId":"UA-71592599-1","domain":"auto","siteSpeedSampleRate":"10","enhancedEcommerce":true,"doubleClick":true,"includeSearch":true},"Pinterest Pixel":{"pixelId":"2619861790849"}}
+          );
+
+          var loaded = false;
+          trekkie.ready(function() {
+            if (loaded) return;
+            loaded = true;
+
+            window.ShopifyAnalytics.lib = window.trekkie;
+            
+      ga('require', 'linker');
+      function addListener(element, type, callback) {
+        if (element.addEventListener) {
+          element.addEventListener(type, callback);
+        }
+        else if (element.attachEvent) {
+          element.attachEvent('on' + type, callback);
+        }
+      }
+      function decorate(event) {
+        event = event || window.event;
+        var target = event.target || event.srcElement;
+        if (target && (target.getAttribute('action') || target.getAttribute('href'))) {
+          ga(function (tracker) {
+            var linkerParam = tracker.get('linkerParam');
+            document.cookie = '_shopify_ga=' + linkerParam + '; ' + 'path=/';
+          });
+        }
+      }
+      addListener(window, 'load', function(){
+        for (var i=0; i < document.forms.length; i++) {
+          var action = document.forms[i].getAttribute('action');
+          if(action && action.indexOf('/cart') >= 0) {
+            addListener(document.forms[i], 'submit', decorate);
+          }
+        }
+        for (var i=0; i < document.links.length; i++) {
+          var href = document.links[i].getAttribute('href');
+          if(href && href.indexOf('/checkout') >= 0) {
+            addListener(document.links[i], 'click', decorate);
+          }
+        }
+      });
+    
+
+            var originalDocumentWrite = document.write;
+            document.write = customDocumentWrite;
+            try { window.ShopifyAnalytics.merchantGoogleAnalytics.call(this); } catch(error) {};
+            document.write = originalDocumentWrite;
+
+            
+        window.ShopifyAnalytics.lib.page(
+          null,
+          {}
+        );
+      
+            
+          });
+
+          
+      var eventsListenerScript = document.createElement('script');
+      eventsListenerScript.async = true;
+      eventsListenerScript.src = "//cdn.shopify.com/s/assets/shop_events_listener-e9a55102d917c9da34b010b35ea7d4f9994a49a04a91f90102547f343a0c0b1e.js";
+      document.getElementsByTagName('head')[0].appendChild(eventsListenerScript);
+    
+        })();
+      </script>
+<script type="text/rocketscript">
+        function getStyle(el,styleProp) {
+          var x=el;
+          if (x.currentStyle)
+            var y = x.currentStyle[styleProp];
+          else if (window.getComputedStyle)
+            var y = document.defaultView.getComputedStyle(x,null).getPropertyValue(styleProp);
+          return y;
+        }
+
+        function doShift(down){
+          var allElements = document.getElementsByTagName('*');
+          for (var i=0; i<allElements.length; i++) {
+            if (allElements[i].id != "admin_bar_iframe" && getStyle(allElements[i],"position") == "fixed")
+              allElements[i].style.top = parseInt(getStyle(allElements[i], "top"),10) + (down ? 40 : -40) + "px";
+          }
+        }
+        
+
+        if (window.addEventListener){ addEventListener("message", receiveABMessage, false); }
+        else { window.attachEvent("onmessage", receiveABMessage) }
+
+        function setABVCookie(value) {
+          var ex=new Date();
+          ex.setDate(ex.getDate() + 720);
+          document.cookie = "_abv="+value+";expires="+ex.toUTCString()+";path=/";
+        }
+
+        function receiveABMessage(event) {
+          if(event.origin != 'https://decorate-our-home-planet.myshopify.com') {
+            return;
+          }
+
+          if(event.data == '1') {
+            document.body.style.position = 'relative';
+            document.documentElement.style.paddingTop = "40px";
+            doShift(true);
+            var element = document.getElementById("admin_bar_iframe");
+            element.style.width = '100%';
+            element.style.backgroundColor = '#191919';
+            element.style.right = 'auto';
+            element.style.left = 0;
+            setABVCookie('1');
+          } else if(event.data == '0') {
+            document.body.style.position = 'relative';
+            document.documentElement.style.paddingTop = "0px";
+            doShift(false);
+            var element = document.getElementById("admin_bar_iframe");
+            element.style.backgroundColor = 'transparent';
+            element.style.right = '0px';
+            element.style.left = 'auto';
+            element.style.width = '40px';
+            setABVCookie('0');
+          }
+        }
+      </script>
+<script id="apple-pay-shop-capabilities" type="application/json">{"shopId":8712118,"countryCode":"US","currencyCode":"USD","merchantCapabilities":["supports3DS"],"merchantId":"gid:\/\/shopify\/Shop\/8712118","merchantName":"D.O.H.P. Store","requiredBillingContactFields":["postalAddress","email"],"requiredShippingContactFields":["postalAddress","email"],"shippingType":"shipping","supportedNetworks":["visa","masterCard","amex","discover"]}</script>
+<script data-rocketsrc="//cdn.shopify.com/s/assets/storefront/express_buttons-2fc8fdf6946696d431272e4b60ce80b1df70696ad7ee61dfe1a829a4e2881104.js" defer="defer" crossorigin="anonymous" integrity="sha256-L8j99pRmltQxJy5LYM6Asd9waWrX7mHf4agppOKIEQQ=" type="text/rocketscript"></script>
+<meta name="p:domain_verify" content="73ff2e3f7c645cf6b839f4c6eb87aafc">
+<meta name="shopify-checkout-api-token" content="16e58e863059d1f9e814d954c6244462"/>
+<script type="text/rocketscript">
+//<![CDATA[
+      window.ShopifyExperiments = window.ShopifyExperiments || {};
+      window.ShopifyExperiments.digitalWallet = true;
+
+//]]>
+</script>
+<link rel="stylesheet" media="all" href="//cdn.shopify.com/s/assets/storefront/additional-checkout-buttons-268f2787c6e46fcdc8455b9822142bfb2f78fdae42dcab79a9d1348ab88ade55.css"/>
+<!--[if lte IE 9]>
+<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js" type="text/javascript"></script>
+<script src="//cdn.shopify.com/s/files/1/0871/2118/t/3/assets/respond.min.js?10403176424461686810" type="text/javascript"></script>
+<link href="//cdn.shopify.com/s/files/1/0871/2118/t/3/assets/respond-proxy.html" id="respond-proxy" rel="respond-proxy" />
+<link href="//dohp.com/search?q=3f0eac4a4d0ba13e7d574dd61191a57b" id="respond-redirect" rel="respond-redirect" />
+<script src="//dohp.com/search?q=3f0eac4a4d0ba13e7d574dd61191a57b" type="text/javascript"></script>
+<![endif]-->
+<script data-rocketsrc="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" integrity="sha384-/Gm+ur33q/W+9ANGYwB2Q4V0ZWApToOzRuA8md/1p9xMMxpqnlguMvk8QuEFWA1B" crossorigin="anonymous" type="text/rocketscript"></script>
+<script data-rocketsrc="//cdn.shopify.com/s/files/1/0871/2118/t/3/assets/modernizr.min.js?10403176424461686810" type="text/rocketscript"></script>
+ 
+<meta name="google-site-verification" content="BjLhp_qn7WjLgEIAzwZJb9w87VueDXdVTTlmg3e5xwk"/>
+<meta name="google-site-verification" content="ay3ChkZwBiTqBdGmFd5ILVsJtr958bR6sej7JXcGIV4"/>
+ 
+<script type="text/rocketscript" data-rocketsrc="https://cdn.ywxi.net/js/1.js" async></script>
+ 
+<script id="hull-js-sdk" access-token="" customer-id="" org-url="https://8828fe18.hullapp.io" platform-id="5696d5d327532535e6000b4e" js-url="https://js.hull.io/0.10.0/hull.js.gz" data-rocketsrc="https://js.hull.io/0.10.0/hull.js.gz" callback-url="/a/hull-callback" raven-dsn="" async type="text/rocketscript"></script>
+<script type="text/rocketscript">
+window.HullShopify = (function() {
+  var data = { template: "404" };
+  data.cart = {"token":"2a9c6d8fc0041d6178eab831681d6f21","note":null,"attributes":{},"original_total_price":0,"total_price":0,"total_discount":0,"total_weight":0,"item_count":0,"items":[],"requires_shipping":false};
+  
+  
+  
+  
+  return data;
+})();
+</script>
+ 
+<meta name="msvalidate.01" content="50FA8EBC42F1F7180D897B3A4A1DA4C4"/>
+ 
+<script type="text/rocketscript">(function(){function b(){var a=document.createElement("script");a.async=true;a.src="//d3mx6ldbbuey04.cloudfront.net/v2/badge.js";var c=document.getElementsByTagName("script")[0];c.parentNode.insertBefore(a,c)}window.attachEvent?window.attachEvent("onload",b):window.addEventListener("load",b,false)})();</script>
+ 
+ 
+ 
+<meta name="norton-safeweb-site-verification" content="8kl7end17j9rx0i2frhmyk-fra1ht07zqm97txm3sr84zk15rlsm4c-cx77pnqa4s9dz2e-2efjlbit-kqqic9-v5s2tibj0c-kayhqd84g379o7pjci86hbqx5gi3c-"/>
+ 
+ 
+<style>*[data-relatable]{visibility:hidden;}*[data-relatable].rendered{visibility:visible;}</style>
+<script type="text/rocketscript">
+  var Relatable={base_url:"https://relatable.heliumdev.com/resources/384b0fb0e848b08a699e068da63f5c8a",
+  callbacks:[],ready:function(callback){if(this.loaded){callback();}else{this.callbacks.push(callback);}}};
+</script>
+<script data-rocketsrc="//cdn-relatable.heliumdev.com/js/1.0/relatable.js" async type="text/rocketscript"></script>
+ 
+ 
+<script type="text/rocketscript" data-rocketsrc="https://s3.amazonaws.com/lastsecondcoupon/js/quickannouncementbar.js?shop=decorate-our-home-planet.myshopify.com"></script>
+ 
+<script data-rocketsrc="https://use.typekit.net/cbp7twt.js" type="text/rocketscript"></script>
+<script type="text/rocketscript">try{Typekit.load({ async: true });}catch(e){}</script>
+ 
+<script async data-rocketsrc="//platform.twitter.com/widgets.js" charset="utf-8" type="text/rocketscript"></script>
+<link rel="stylesheet" href="//cdn.shopify.com/s/files/1/0871/2118/t/3/assets/sca-quick-view.css?10403176424461686810">
+<link rel="stylesheet" href="//cdn.shopify.com/s/files/1/0871/2118/t/3/assets/sca-jquery.fancybox.css?10403176424461686810">
+<script data-rocketsrc="//cdn.shopify.com/s/assets/themes_support/option_selection-f3dd7ba25bddfb6b0fe9addc0cae11dc709eeb6a469ec7f66f49e3abc4ce8c81.js" type="text/rocketscript"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-71592599-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+
+(function(b){(function(a){"__CF"in b&&"DJS"in b.__CF?b.__CF.DJS.push(a):"addEventListener"in b?b.addEventListener("load",a,!1):b.attachEvent("onload",a)})(function(){"FB"in b&&"Event"in FB&&"subscribe"in FB.Event&&(FB.Event.subscribe("edge.create",function(a){_gaq.push(["_trackSocial","facebook","like",a])}),FB.Event.subscribe("edge.remove",function(a){_gaq.push(["_trackSocial","facebook","unlike",a])}),FB.Event.subscribe("message.send",function(a){_gaq.push(["_trackSocial","facebook","send",a])}));"twttr"in b&&"events"in twttr&&"bind"in twttr.events&&twttr.events.bind("tweet",function(a){if(a){var b;if(a.target&&a.target.nodeName=="IFRAME")a:{if(a=a.target.src){a=a.split("#")[0].match(/[^?=&]+=([^&]*)?/g);b=0;for(var c;c=a[b];++b)if(c.indexOf("url")===0){b=unescape(c.split("=")[1]);break a}}b=void 0}_gaq.push(["_trackSocial","twitter","tweet",b])}})})})(window);
+/* ]]> */
+</script>
+</head>
+<body id="404-not-found" class="template-404">
+<div id="fb-root"></div>
+<script type="text/rocketscript">(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.7&appId=366826440108184";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<header class="site-header" role="banner">
+<div class="wrapper">
+<div class="grid--full">
+<div class="mobile-nav--sticky">
+<div class="grid-item medium--hide large--hide one-half mobile-nav__item">
+<div id="mobileNavBar">
+<button class="menu-toggle btn-link mobile-nav-bar__link">
+<span class="icon-fallback-text">
+<span class="icon icon-menu" aria-hidden="true"></span>
+</span>
+Menu
+</button>
+</div>
+</div>
+<div class="grid-item medium--hide large--hide one-half text-right mobile-nav__item">
+<a href="https://dohp.com/cart" class="cart-toggle mobile-nav-bar__link">
+Cart
+<span class="cart-icon-wrapper">
+<span class="icon-fallback-text">
+<span class="icon icon-cart" aria-hidden="true"></span>
+</span>
+<span class="cart-count hidden-count">0</span>
+</span>
+</a>
+</div>
+</div>
+<div class="grid-item one-quarter small--hide header-login-wrapper">
+<a href="https://dohp.com/account/login">
+<span class="icon icon-user" aria-hidden="true"></span>
+Log In</a>
+ 
+<span class="icon-fallback-text">
+</span>
+<a href="https://dohp.com/account/register" id="customer_register_link">or Sign Up</a>
+<span class="icon-fallback-text">
+</span>
+</div>
+<div class="grid-item large--one-half medium--one-half header-logo-wrapper">
+<div class="h1 header-logo" itemscope itemtype="http://schema.org/Organization">
+<a href="https://dohp.com/" itemprop="url">
+<img src="//cdn.shopify.com/s/files/1/0871/2118/t/3/assets/logo.png?10403176424461686810" alt="D.O.H.P. Store" itemprop="logo">
+</a>
+</div>
+<div class="tk-blambot-casual"><center><a href="https://dohp.com/">Decorate Our Home Planet (D.O.H.P.)</a></center>
+ 
+ 
+</div>
+</div>
+<div class="grid-item one-quarter small--hide header-cart-wrapper">
+<a href="https://dohp.com/cart" class="cart-toggle" id="cartToggle">
+<span class="cart-icon-wrapper">
+<span class="icon-fallback-text">
+<span class="icon icon-cart" aria-hidden="true"></span>
+</span>
+<span class="cart-count hidden-count">0</span>
+</span>
+Cart
+</a>
+<form action="/search" method="get" class="input-group search-bar" role="search">
+<input type="search" name="q" value="" placeholder="Search our store" class="input-group-field" aria-label="Search our store">
+<span class="input-group-btn">
+<button type="submit" class="btn icon-fallback-text">
+<span class="icon icon-search" aria-hidden="true"></span>
+<span class="fallback-text">Search</span>
+</button>
+</span>
+</form>
+</div>
+</div>
+</div>
+</header>
+<hr class="visible--small hr--header">
+<nav class="wrapper nav-bar" role="navigation">
+ 
+<ul class="site-nav" id="accessibleNav">
+<li class="site-nav--has-dropdown" aria-haspopup="true">
+<a href="https://dohp.com/denim">Denim</a>
+<ul class="site-nav--dropdown">
+<li><a href="https://dohp.com/denim">Denim Home</a></li>
+<li><a href="https://dohp.com/collections/denim/products/joshua">The Joshua</a></li>
+<li><a href="https://dohp.com/collections/denim/products/kelvin">The Kelvin</a></li>
+<li><a href="https://dohp.com/collections/denim/products/sycamore">The Sycamore</a></li>
+</ul>
+</li>
+<li class="site-nav--has-dropdown" aria-haspopup="true">
+<a href="https://dohp.com/pages/treeshirts">Tree-Shirts</a>
+<ul class="site-nav--dropdown">
+<li><a href="https://dohp.com/pages/treeshirts">What are they?</a></li>
+<li><a href="https://dohp.com/collections/comic">Comic Collection</a></li>
+<li><a href="https://dohp.com/collections/fall2016">Fall 2016</a></li>
+<li><a href="https://dohp.com/collections/summer2016">Summer 2016</a></li>
+<li><a href="https://dohp.com/collections/spring2016">Spring 2016</a></li>
+<li><a href="https://dohp.com/collections/newshirts">New</a></li>
+<li><a href="https://dohp.com/products/signature">Signature</a></li>
+<li><a href="https://dohp.com/collections/imagination">Imagination</a></li>
+<li><a href="https://dohp.com/collections/colormedohp">Customize Your Own</a></li>
+</ul>
+</li>
+<li class="site-nav--has-dropdown" aria-haspopup="true">
+<a href="https://dohp.com/collections/skateboards">Skateboards</a>
+<ul class="site-nav--dropdown">
+<li><a href="https://dohp.com/products/blue-tree-skateboard">Blue Tree</a></li>
+<li><a href="https://dohp.com/products/fiveflavorfreshskateboard">Five Flavor Fresh</a></li>
+<li><a href="https://dohp.com/products/savetheworldskateboard">Save the World?</a></li>
+</ul>
+</li>
+<li class="site-nav--has-dropdown" aria-haspopup="true">
+<a href="https://dohp.com/pages/about-us">About</a>
+<ul class="site-nav--dropdown">
+<li><a href="https://dohp.com/pages/treeshirts">What are Tree-Shirts?</a></li>
+<li><a href="https://dohp.com/pages/plantingtrees">Planting Trees</a></li>
+<li><a href="https://dohp.com/pages/the-manifesto">The Manifesto</a></li>
+<li><a href="https://dohp.com/pages/importantstuff">F.A.Q.</a></li>
+<li><a href="https://dohp.com/pages/about-us">About Us</a></li>
+<li><a href="https://dohp.com/pages/in-the-news">Press</a></li>
+<li><a href="https://dohp.com/pages/wallpapers">Wallpapers</a></li>
+<li><a href="https://dohp.com/blogs/techteam">Tech Team Blog</a></li>
+<li><a href="https://dohp.com/pages/contact-us">Contact Us</a></li>
+</ul>
+</li>
+<li class="site-nav--has-dropdown" aria-haspopup="true">
+<a href="https://dohp.com/pages/plantingtrees">Planting</a>
+<ul class="site-nav--dropdown">
+<li><a href="https://dohp.com/pages/plantingtrees">Planting Trees</a></li>
+<li><a href="https://dohp.com/pages/plant">Plant Your Tree</a></li>
+</ul>
+</li>
+<li class="site-nav--has-dropdown" aria-haspopup="true">
+<a href="https://dohp.com/pages/app">App</a>
+<ul class="site-nav--dropdown">
+<li><a href="https://dohp.com/pages/app">App</a></li>
+<li><a href="https://play.google.com/store/apps/details?id=com.dohp.app">Get it on Google Play</a></li>
+<li><a href="http://app.dohp.com">Web Version</a></li>
+<li><a href="https://dohp.com/pages/skatepark-finder">Skatepark Finder</a></li>
+</ul>
+</li>
+<li class="site-nav--has-dropdown" aria-haspopup="true">
+<a href="https://dohp.com/oct9">Events</a>
+<ul class="site-nav--dropdown">
+<li><a href="https://dohp.com/blogs/upcoming-events">All Events</a></li>
+<li><a href="https://dohp.com/oct9">2ND ANNUAL DOHP 3TREES TOUR: OCTOBER 9, 2016 @ RIVERBANK SKATEPARK</a></li>
+<li><a href="https://dohp.com/blogs/upcoming-events/125353283-2nd-annual-dohp-3trees-tour-june-18-2016-napa-skatepark">2ND ANNUAL DOHP 3TREES TOUR: JUNE 18, 2016 @ NAPA SKATEPARK</a></li>
+<li><a href="https://dohp.com/patterson">2nd ANNUAL DOHP 3TREES TOUR: PATTERSON CA APRIL 23</a></li>
+<li><a href="https://dohp.com/blogs/upcoming-events/91729859-march-madness-at-napa-skatepark">March Madness at Napa Skatepark</a></li>
+</ul>
+</li>
+<li class="site-nav--has-dropdown" aria-haspopup="true">
+<a href="https://dohp.com/hanzogreen">Hanzo Green</a>
+<ul class="site-nav--dropdown">
+<li><a href="https://dohp.com/hanzogreen">Hanzo Green home</a></li>
+<li><a href="https://dohpco.wixsite.com/hanzogreen/storylines">Storylines</a></li>
+<li><a href="https://dohpco.wixsite.com/hanzogreen/back-backstory">Back-Backstory</a></li>
+<li><a href="https://dohpco.wixsite.com/hanzogreen/backstory">Backstory</a></li>
+<li><a href="https://dohpco.wixsite.com/hanzogreen/comic-book">Comic Books</a></li>
+<li><a href="https://dohpco.wixsite.com/hanzogreen/game">Game</a></li>
+<li><a href="https://dohp.com/collections/whoishanzogreen">Products</a></li>
+</ul>
+</li>
+<li class="customer-navlink medium--hide large--hide"><a href="https://dohp.com/account/login" id="customer_login_link">Sign in</a></li>
+<li class="customer-navlink medium--hide large--hide"><a href="https://dohp.com/account/register" id="customer_register_link">Create an Account</a></li>
+</ul>
+</nav>
+<main class="wrapper main-content" role="main">
+<div class="tk-blambot-casual" class="grid--full">
+<div class="section-header text-center">
+<h1 class="tk-blambot-pro">404 Page Not Found</h1>
+<p class="text-center">The page you requested does not exist. Click <a href="https://dohp.com/collections/all">here</a> to continue shopping.</p><div id="wb404"/>
+<script data-rocketsrc="https://archive.org/web/wb404.js" type="text/rocketscript"> </script>
+</div>
+<p>If you feel something should be here, you can <a href="https://dohp.com/pages/report-a-problem">report it anonymously</a>.
+<div style="text-align: center;">Or, <a href="https://twitter.com/messages/compose?recipient_id=764289118901645313&amp;ref_src=twsrc%5Etfw" target="_blank" title="Contact Tech Support">contact tech support</a>.<twitterwidget class="twitter-dm-button twitter-dm-button-rendered" id="twitter-widget-0" style="position: static; visibility: visible; display: inline-block; transform: rotate(0deg);"></twitterwidget></div>
+<div>
+<form action="/search" method="get" class="input-group search-bar" role="search">
+<input type="search" name="q" value="" placeholder="Search our store" class="input-group-field" aria-label="Search our store">
+<span class="input-group-btn">
+<button type="submit" class="btn icon-fallback-text">
+<span class="icon icon-search" aria-hidden="true"></span>
+<span class="fallback-text">Search</span>
+</button>
+</span>
+</form>
+</div>
+</div>
+</main>
+<footer class="tk-blambot-casual" class="site-footer" role="contentinfo">
+<div class="wrapper wrapper-footer-body">
+<hr>
+<div class="grid">
+<div class="grid-item medium--one-third large--one-quarter push--large--one-eighth">
+<h3 class="footer-heading">Quick Links</h3>
+<ul class="footer-quick-links">
+<li><a href="https://dohp.com/pages/privacy-policy">Privacy Policy</a></li>
+<li><a href="https://dohp.com/pages/shipping-returns">Shipping & Returns</a></li>
+<li><a href="https://dohp.com/pages/terms-of-service">Terms Of Service</a></li>
+<li><a href="javascript:var%20KICKASSVERSION='2.0';var%20s%20=%20document.createElement('script');s.type='text/javascript';document.body.appendChild(s);s.src='//hi.kickassapp.com/kickass.js';void(0);">Browser Blaster</a></li>
+<li><a href="https://dohp.com/pages/report-a-problem">Report a Problem</a></li>
+<li><a href="https://dohp.com/search">Search</a></li>
+</ul>
+</div>
+<div class="grid-item medium--one-third large--one-quarter push--large--one-eighth">
+<h3 class="footer-heading">Get Connected</h3>
+<ul class="inline-list social-icons">
+<li>
+<a class="icon-fallback-text" href="https://twitter.com/d_o_h_p" title="D.O.H.P. Store on Twitter">
+<span class="icon icon-twitter" aria-hidden="true"></span>
+<span class="fallback-text">Twitter</span>
+</a>
+</li>
+<li>
+<a class="icon-fallback-text" href="/Facebook" title="D.O.H.P. Store on Facebook">
+<span class="icon icon-facebook" aria-hidden="true"></span>
+<span class="fallback-text">Facebook</span>
+</a>
+</li>
+<li>
+<a class="icon-fallback-text" href="https://www.pinterest.com/d_o_h_p/" title="D.O.H.P. Store on Pinterest">
+<span class="icon icon-pinterest" aria-hidden="true"></span>
+<span class="fallback-text">Pinterest</span>
+</a>
+</li>
+<li>
+<a class="icon-fallback-text" href="/g+" title="D.O.H.P. Store on Google">
+<span class="icon icon-google" aria-hidden="true"></span>
+<span class="fallback-text">Google</span>
+</a>
+</li>
+<li>
+<a class="icon-fallback-text" href="/insta" title="D.O.H.P. Store on Instagram">
+<span class="icon icon-instagram" aria-hidden="true"></span>
+<span class="fallback-text">Instagram</span>
+</a>
+</li>
+<li>
+<a class="icon-fallback-text" href="http://tumblr.dohp.com/" title="D.O.H.P. Store on Tumblr">
+<span class="icon icon-tumblr" aria-hidden="true"></span>
+<span class="fallback-text">Tumblr</span>
+</a>
+</li>
+<li>
+<a class="icon-fallback-text" href="https://www.youtube.com/c/Dohp3Trees" title="D.O.H.P. Store on YouTube">
+<span class="icon icon-youtube" aria-hidden="true"></span>
+<span class="fallback-text">YouTube</span>
+</a>
+</li>
+<li>
+<a class="icon-fallback-text" href="https://vimeo.com/channels/dohp" title="D.O.H.P. Store on Vimeo">
+<span class="icon icon-vimeo" aria-hidden="true"></span>
+<span class="fallback-text">Vimeo</span>
+</a>
+</li>
+</ul>
+</div>
+<div class="grid-item medium--one-third large--one-quarter push--large--one-eighth">
+<h3 class="footer-heading">Share and Follow</h3>
+<div class="custom-content">
+<a href="https://twitter.com/share" class="twitter-share-button" data-show-count="false">Tweet</a>
+<br/>
+<a href="https://twitter.com/d_o_h_p" class="twitter-follow-button" data-show-count="false">Follow @d_o_h_p</a>
+<br/>
+<a href="https://twitter.com/intent/tweet?button_hashtag=dohp" class="twitter-hashtag-button" data-show-count="false">Tweet #dohp</a>
+<br/>
+<div class="fb-like" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+<br/>
+<div class="fb-save" data-size="small"></div>
+<br/>
+<div class="fb-send"></div>
+<br/>
+<a data-pin-do="buttonFollow" href="https://www.pinterest.com/d_o_h_p/">Follow&nbsp;d_o_h_p</a>
+<br/>
+<div class="g-plusone" data-size="medium"></div>
+<br/>
+<div class="g-follow" data-annotation="bubble" data-height="20" data-href="//plus.google.com/u/1/103564991570235295893" data-rel="author"></div>
+<br/>
+<div class="g-ytsubscribe" data-channelid="UCeeVdWMpDnpQwqzIDTssf4A" data-layout="default" data-count="default"></div>
+<br/>
+<a class="tumblr-share-button" data-color="blue" data-notes="right" href="https://embed.tumblr.com/share"></a> <script type="text/rocketscript">!function(d,s,id){var js,ajs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://secure.assets.tumblr.com/share-button.js";ajs.parentNode.insertBefore(js,ajs);}}(document, "script", "tumblr-js");</script>
+</div>
+</div>
+</div>
+</div>
+<div class="wrapper wrapper-footer-legal">
+<hr>
+<div class="grid">
+<div class="grid-item wrapper-legal large--one-half">
+<p>
+<small>&copy; 2015 - 2017, Digitally Organic Hybrid Products.</small>
+<small><a target="_blank" rel="nofollow" href="https://www.shopify.com">Powered by Shopify</a></small>
+</p>
+</div>
+<div class="grid-item wrapper-accepted-payments large--one-half">
+<ul class="inline-list payment-icons">
+<li>
+<span class="icon-fallback-text">
+<span class="icon icon-american_express" aria-hidden="true"></span>
+<span class="fallback-text">american express</span>
+</span>
+</li>
+<li>
+<span class="icon-fallback-text">
+<span class="icon icon-apple_pay" aria-hidden="true"></span>
+<span class="fallback-text">apple pay</span>
+</span>
+</li>
+<li>
+<span class="icon-fallback-text">
+<span class="icon icon-diners_club" aria-hidden="true"></span>
+<span class="fallback-text">diners club</span>
+</span>
+</li>
+<li>
+<span class="icon-fallback-text">
+<span class="icon icon-discover" aria-hidden="true"></span>
+<span class="fallback-text">discover</span>
+</span>
+</li>
+<li>
+<span class="icon-fallback-text">
+<span class="icon icon-jcb" aria-hidden="true"></span>
+<span class="fallback-text">jcb</span>
+</span>
+</li>
+<li>
+<span class="icon-fallback-text">
+<span class="icon icon-master" aria-hidden="true"></span>
+<span class="fallback-text">master</span>
+</span>
+</li>
+<li>
+<span class="icon-fallback-text">
+<span class="icon icon-paypal" aria-hidden="true"></span>
+<span class="fallback-text">paypal</span>
+</span>
+</li>
+<li>
+<span class="icon-fallback-text">
+<span class="icon icon-visa" aria-hidden="true"></span>
+<span class="fallback-text">visa</span>
+</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<center>  
+ <tr><td align="center"></td></tr><tr><td align="center"><a href="https://www.paypal.com/webapps/mpp/paypal-popup" title="How PayPal Works" onclick="javascript:window.open('https://www.paypal.com/webapps/mpp/paypal-popup','WIPaypal','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=1060, height=700'); return false;"><img src="https://www.paypalobjects.com/webstatic/mktg/logo/pp_cc_mark_37x23.jpg" border="0" alt="PayPal Logo"></a></td></tr></table> 
+ <a href="https://www.shopify.com/?utm_source=secure&amp;utm_medium=shop" title="This online store is secured by Shopify" target="_blank"><img src="//cdn.shopify.com/s/images/badges/shopify-secure-badge-light-shadow.png" alt="Shopify secure badge"/></a>
+  
+  
+  
+ <script data-rocketsrc="https://cdn.ywxi.net/js/inline.js?w=90" type="text/rocketscript"></script>
+ <a href='https://web-beta.archive.org/web/20161102173442/http://no-www.org/'><img src='https://cdn.shopify.com/s/files/1/0871/2118/files/nowwwb1.png' border=0 alt='Class B'></a>
+ <a href='https://www.apple.com/apple-pay/'><img src='https://cdn.shopify.com/s/files/1/0871/2118/files/Apple_Pay_Payment_Mark.png' height="35" alt=' Pay'></a>
+  <a href='https://www.cloudflare.com/'><img src='https://www.cloudflare.com/media/images/web-badges/cf-web-badges-g-ltgray.png' alt='Cloudflare'></a>
+ </center>
+</footer>
+<script data-rocketsrc="//cdn.shopify.com/s/files/1/0871/2118/t/3/assets/shop.js?10403176424461686810" type="text/rocketscript"></script>
+<a href="#" title="Back to the top" class="back-to-top">
+<span>Back to the top</span> <i class="fa fa-arrow-circle-o-up fa-2x"></i>
+</a>
+ 
+<link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-UMpQFQdby6sZ3T16Qz0uq+QsAA7AhfgfMhkZdFOjY8D5kfgRaU2RKE6wHNEo7062" type="text/css" media="all">
+<style>.back-to-top{position:fixed;bottom:4em;right:0px;text-decoration:none;color:#999;background-color:#eee;font-size:16px;padding:0.3em;display:none;-webkit-border-top-left-radius:3px;-webkit-border-bottom-left-radius:3px;-moz-border-radius-topleft:3px;-moz-border-radius-bottomleft:3px;border-top-left-radius:3px;border-bottom-left-radius:3px;z-index:60000;}.back-to-top i{vertical-align:middle;}.back-to-top span{padding-left:0.5em;}.back-to-top i+span{padding-left:0;}.back-to-top:hover{text-decoration:none;color:#555;}</style>
+<script type="text/rocketscript">
+jQuery(function($) {
+  var offset = 300;
+  var duration = 500;
+  $(window).scroll(function() {
+    if ($(this).scrollTop() > offset) {
+      $('.back-to-top').fadeIn(duration);
+    } 
+    else {
+      $('.back-to-top').fadeOut(duration);
+    }
+  });
+  $('.back-to-top').unbind('click.smoothscroll').bind('click', function(e) {
+    e.preventDefault();
+    $('html, body').animate( { scrollTop: 0 }, duration);
+    return false;
+  })
+});
+</script>
+ 
+<script type="text/rocketscript">
+    var UEVParams = {
+        "id" : "79902ab946db961871e0ca3e97aa6774",
+        "apiScript" : "//cdn.shopify.com/s/assets/themes_support/api.jquery-b90ee9a5604bc68b2f4a3af86b4551207834575e264152eac4822d0b60e0c0d5.js"
+    }
+</script>
+ 
+ 
+<script type="text/rocketscript">
+    var MRParams = {
+        "id" : "79902ab946db961871e0ca3e97aa6774",
+        "apiScript" : "//cdn.shopify.com/s/assets/themes_support/api.jquery-b90ee9a5604bc68b2f4a3af86b4551207834575e264152eac4822d0b60e0c0d5.js",
+        "total_price" : "0",
+        "total_quantity" : "0",
+        "product" : null
+    }
+</script>
+ 
+<div id="sca-qv-showqv" class="sca-bm" style="display: none !important;">
+<div>
+ 
+<div class="quick-view-container fancyox-view-detail">
+<div id="sca-qv-left" class="sca-left">
+<div id="sca-qv-sale" class="sca-qv-sale sca-qv-hidden">Sale</div>
+ 
+<div class="sca-qv-zoom-container">
+<div class="zoomWrapper">
+<div id="sca-qv-zoomcontainer" class='sqa-qv-zoomcontainer'>
+ 
+</div>
+</div>
+</div>
+ 
+ 
+<div id="sca-qv-galleryid" class="sca-qv-gallery">
+ 
+</div>
+ 
+</div>
+ 
+<div id="sca-qv-right" class="sca-right">
+ 
+<div id="sca-qv-title" class="name-title">
+ 
+</div>
+ 
+<div id="sca-qv-price-container" class="sca-qv-price-container">
+ 
+</div>
+ 
+<div id="sca-qv-des" class="sca-qv-row">
+ 
+</div>
+ 
+<div class="sca-qv-row">
+<a id="sca-qv-detail" href=""> View full product details → </a>
+</div>
+ 
+<div id='sca-qv-cartform'>
+<form id="sca-qv-add-item-form" method="post">
+ 
+<div class="sca-qv-product-options">
+ 
+<div id="sca-qv-variant-options" class="sca-qv-optionrow">
+ 
+</div>
+ 
+<div class="sca-qv-optionrow">
+<label>Quantity</label>
+<input id="sca-qv-quantity" min="1" type="number" name="quantity" value="1"/>
+</div>
+ 
+<div class="sca-qv-optionrow">
+<p id="sca-qv-unavailable" class="sca-sold-out sca-qv-hidden">Unavailable</p>
+<p id="sca-qv-sold-out" class="sca-sold-out sca-qv-hidden">Sold Out</p>
+<input type="submit" class="sca-qv-cartbtn sca-qv-hidden" value="ADD TO CART"/>
+<script data-rocketsrc="https://cdn.ywxi.net/js/inline.js?t=103" type="text/rocketscript"></script>
+</div>
+ 
+</div>
+ 
+</form>
+</div>
+</div>
+ 
+<center><script data-rocketsrc="https://cdn.ywxi.net/js/inline.js?w=90" type="text/rocketscript"></script></center>
+</div>
+ 
+</div>
+</div>
+<div id="scaqv-metadata" autoconfig="yes" noimage="//cdn.shopify.com/s/files/1/0871/2118/t/3/assets/sca-qv-no-image.jpg?10403176424461686810" moneyFormat="$ {{amount}}" jsondata="eyJibnRfdGV4dCI6IlFVSUNLIFZJRVciLCJibnRfdGV4dF9mb250IjoidGFob21hIiwiYm50X3RleHRfZm9udHNpemUiOiIxNHB4IiwiYm50X3RleHRfY29sb3IiOiIjZmZmZmZmIiwiYm50X3RleHRfaG92ZXIiOiIjZmZmZmZmIiwiYm50X2NvbG9yIjoiIzAwMDAwMCIsImJudF9jb2xvcl9ob3ZlciI6IiMwMDhmYmUiLCJibnRfcG9zc2l0aW9uIjoidG9wIiwiaW1nX21haW5fd2lkdGgiOiIzNDVweCIsIndkX2hlaWdodCI6IjUwMCIsIndkX3dpZHRoIjoiODYwIiwiY2FydF9nbyI6Im5vIiwiY2FydGNvdW50IjoiI2NhcnQtY291bnR8I21pbmljYXJ0ICNjYXJ0LXRhcmdldC1kZXNrdG9wfCNkcmF3ZXIgLmNvbnRhaW5lcnwud3JhcHBlciAuaGVhZGVyLWNhcnQtYnRufCNjYXJ0LXRvdGFsICNjYXJ0LXByaWNlfCNjYXJ0LWNvdW50IC5uby11bmRlcmxpbmV8LmZyIC5jYXJ0IC50b3RhbF9wcmljZXwudW5zdHlsZWQgLmZyIC5jYXJ0fC53cmFwcGVyICNjYXJ0VG9nZ2xlfCN1bWJyZWxsYSAuY2FydC1saW5rIC5pY29ufCNtaW5pLWNhcnQgI2NhcnQtdGFyZ2V0fC50b29sYmFyLXdyYXBwZXIgLnVuc3R5bGVkIiwiY2FydF90b3RhbCI6IiNjYXJ0aWQtbmVlZC10by1yZWxvYWQiLCJjYXJ0X25vdGlmeV9hZGRfZm9ybWF0IjoiVGhpcyBwcm9kdWN0IGluICpZb3VyIENhcnQlIGFscmVhZHkuIiwiY2FydF9ub3RpZnlfaW5fZm9ybWF0IjoiSXRlbSBhZGRlZCB0byBjYXJ0ISAqVmlldyBDYXJ0JS4iLCJjYXJ0X2NvbG9yIjoiI2ZjNGMwMyIsInNhbGVfaWNvbl9jb2xvciI6IiNmYzRjMDMiLCJwcmljZV9jb2xvciI6IiNmNDViNGYiLCJsaW5rX2NvbG9yIjoiI2Y0NWI0ZiIsInRpdGxlX2NvbG9yIjoiIzAwODhjZCIsInF2X2Rpc2FibGUiOm51bGwsImlzX3JhdGVkIjpmYWxzZSwicmF0ZV9zY29yZSI6MCwicmF0ZV9jb21tZW50IjoiIn0="></div>
+ 
+<script async defer data-rocketsrc="//assets.pinterest.com/js/pinit.js" type="text/rocketscript"></script>
+<script type="text/rocketscript">
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/platform.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
+</body>
+</html>
+<iframe id="admin_bar_iframe" src="https://decorate-our-home-planet.myshopify.com/admin/bar?u=https://dohp.com/404" style="height: 40px; position:fixed; top:0; left:0; right:0; z-index:2147483647;right:0px; border-bottom-width: 0px; left:auto" width="40px" frameborder="0" allowTransparency="true">{}</iframe>
